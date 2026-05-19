@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Калькулятор дозировки лекарств</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Калькулятор дозировки</h1>
+      <p class="subtitle">Расчёт дозы препарата по массе тела пациента</p>
+    </header>
+
+    <main>
+      <form id="calc-form" novalidate>
+        <div class="field-group">
+          <label for="drug">Препарат</label>
+          <select id="drug" required>
+            <option value="">— Выберите препарат —</option>
+          </select>
+          <div class="drug-info" id="drug-info"></div>
+        </div>
+
+        <div class="row">
+          <div class="field-group">
+            <label for="weight">Масса тела (кг)</label>
+            <input type="number" id="weight" min="0.5" max="300" step="0.1" placeholder="70" required />
+          </div>
+
+          <div class="field-group">
+            <label for="age-group">Возрастная группа</label>
+            <select id="age-group" required>
+              <option value="adult">Взрослый (≥ 18 лет)</option>
+              <option value="child">Ребёнок (2–17 лет)</option>
+              <option value="infant">Младенец (< 2 лет)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="frequency">Кратность приёма в сутки</label>
+          <select id="frequency">
+            <option value="1">1 раз в сутки</option>
+            <option value="2">2 раза в сутки</option>
+            <option value="3" selected>3 раза в сутки</option>
+            <option value="4">4 раза в сутки</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="renal">Нарушение функции почек</label>
+          <select id="renal">
+            <option value="normal">Нет (нормальная функция)</option>
+            <option value="mild">Лёгкое (СКФ 60–89)</option>
+            <option value="moderate">Умеренное (СКФ 30–59)</option>
+            <option value="severe">Тяжёлое (СКФ < 30)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-calc">Рассчитать дозу</button>
+      </form>
+
+      <section id="result" class="result hidden" aria-live="polite"></section>
+
+      <section class="disclaimer">
+        <strong>Важно:</strong> Калькулятор носит справочный характер. Окончательное решение принимает врач
+        с учётом клинической картины, сопутствующих заболеваний и индивидуальных особенностей пациента.
+      </section>
+    </main>
+  </div>
+
+  <script src="drugs.js"></script>
+  <script src="calculator.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
